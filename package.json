@@ -1,7 +1,13 @@
 {
-  "name": "DM listings",
+  "name": "DMlistings",
   "version": "0.1.0",
   "dependencies": {
     "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  },
+  "scripts": {
+    "start": "nodemon src/index.js"
   }
 }
