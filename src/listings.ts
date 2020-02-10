@@ -9,7 +9,7 @@ type Listing = {
   rating: number;
 };
 
-export const Listings: Listing[] = [
+export const listings: Listing[] = [
   {
     id: "0001",
     title: "House for Sale: Club de Campo Area",
