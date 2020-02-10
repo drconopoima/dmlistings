@@ -2,7 +2,7 @@ import express from "express";
 const app = express();
 const port: number = 8085;
 
-app.get("/", (request, response) =>
+app.get("/", (_request, response) =>
   response.send(`Hello visitor of port ${port}!`)
 );
 
