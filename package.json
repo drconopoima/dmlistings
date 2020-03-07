@@ -1,14 +1,27 @@
 {
   "name": "dmlistings",
   "version": "0.2.0",
+  "keywords": [
+    "apache-server",
+    "mongodb",
+    "typescript"
+  ],
+  "author": "Luis Díaz",
+  "license": "Apache-2.0",
   "dependencies": {
     "apollo-server-express": "^2.10.1",
     "express": "^4.17.1",
-    "graphql": "^14.6.0"
+    "graphql": "^14.6.0",
+    "mongodb": "^3.5.4"
+  },
+  "homepage": "https://github.com/drconopoima/dmlistings#readme",
+  "bugs": {
+    "url": "https://github.com/drconopoima/dmlistings/issues"
   },
   "devDependencies": {
     "@types/express": "^4.17.2",
     "@types/graphql": "^14.5.0",
+    "@types/mongodb": "^3.5.2",
     "@types/node": "^13.7.0",
     "@typescript-eslint/eslint-plugin": "^2.19.2",
     "@typescript-eslint/parser": "^2.19.2",
