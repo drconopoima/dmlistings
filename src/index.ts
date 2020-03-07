@@ -1,11 +1,25 @@
-import express from "express";
+import express, { Application } from "express";
 import { ApolloServer } from "apollo-server-express";
 import { typeDefs, resolvers } from "./graphql";
+import { connectDatabase } from "./database";
 
-const app = express();
 const port: number = 8085;
 
-const server = new ApolloServer({ typeDefs, resolvers, playground: true });
-server.applyMiddleware({ app, path: "/api" });
+const mount = async (app: Application) => {
+  const db = await connectDatabase();
 
-app.listen(port);
+  const server = new ApolloServer({
+    typeDefs,
+    resolvers,
+    context: () => ({ db }),
+    playground: true
+  });
+  server.applyMiddleware({ app, path: "/api" });
+
+  app.listen(port);
+
+  const listings = await db.listings.find({}).toArray();
+  console.log(listings);
+};
+
+mount(express());
