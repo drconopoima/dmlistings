@@ -1,4 +1,5 @@
 import { MongoClient } from "mongodb";
+import { Database } from "../lib/types";
 
 // Shared Details
 const userMongo = "<user>";
@@ -13,9 +14,9 @@ const uri = `mongodb+srv://${userMongo}:${passwordMongo}@${clusterMongo}.mongodb
 // // MongoDB OnPrem
 // const host = "<ip>";
 // const port = "<port>"
-// const url = `mongodb://<${host}>:${port}/test`
+// const uri = `mongodb://<${host}>:${port}/test`
 
-export const connectDatabase = async () => {
+export const connectDatabase = async (): Promise<Database> => {
   const client = await MongoClient.connect(uri, {
     useNewUrlParser: true,
     useUnifiedTopology: true
