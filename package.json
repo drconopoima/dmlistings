@@ -8,11 +8,16 @@
   ],
   "author": "Luis Díaz",
   "license": "Apache-2.0",
+  "description": "Real State listings App using Typescript, MongoDB, React",
   "dependencies": {
     "apollo-server-express": "^2.10.1",
     "express": "^4.17.1",
     "graphql": "^14.6.0",
     "mongodb": "^3.5.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/drconopoima/dmlistings.git"
   },
   "homepage": "https://github.com/drconopoima/dmlistings#readme",
   "bugs": {
