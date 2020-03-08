@@ -19,12 +19,14 @@
     "url": "https://github.com/drconopoima/dmlistings/issues"
   },
   "devDependencies": {
+    "@types/dotenv": "^8.2.0",
     "@types/express": "^4.17.2",
     "@types/graphql": "^14.5.0",
     "@types/mongodb": "^3.5.2",
     "@types/node": "^13.7.0",
     "@typescript-eslint/eslint-plugin": "^2.19.2",
     "@typescript-eslint/parser": "^2.19.2",
+    "dotenv": "^8.2.0",
     "eslint": "^6.8.0",
     "nodemon": "^2.0.2",
     "ts-node": "^8.6.2",
