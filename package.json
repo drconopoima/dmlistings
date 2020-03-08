@@ -19,7 +19,6 @@
     "url": "https://github.com/drconopoima/dmlistings/issues"
   },
   "devDependencies": {
-    "@types/dotenv": "^8.2.0",
     "@types/express": "^4.17.2",
     "@types/graphql": "^14.5.0",
     "@types/mongodb": "^3.5.2",
