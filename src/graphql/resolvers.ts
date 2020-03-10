@@ -1,5 +1,5 @@
 import { IResolvers } from "apollo-server-express";
-import { listings } from "../listings";
+const listings = require("./listings.json");
 
 export const resolvers: IResolvers = {
   Query: {
