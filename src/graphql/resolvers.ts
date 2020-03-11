@@ -1,20 +1,44 @@
 import { IResolvers } from "apollo-server-express";
-const listings = require("../database/listings.json");
+import { Database, Listing } from "../lib/types";
+import { ObjectID } from "mongodb";
 
 export const resolvers: IResolvers = {
   Query: {
-    listings: () => {
-      return listings;
+    listings: async (
+      _root: undefined,
+      { limit = 50 }: { limit: number },
+      { db }: { db: Database }
+    ): Promise<Listing[]> => {
+      return await db.listings
+        .find({})
+        .limit(limit)
+        .toArray();
     }
   },
   Mutation: {
-    deleteListing: (_root: undefined, { id }: { id: string }) => {
-      for (let index = 0; index < listings.length; index++) {
-        if (listings[index].id === id) {
-          return listings.splice(index, 1)[0];
-        }
+    deleteListing: async (
+      _root: undefined,
+      { id }: { id: string },
+      { db }: { db: Database }
+    ): Promise<Listing> => {
+      const deleteResult = await db.listings.findOneAndDelete({
+        _id: new ObjectID(id)
+      });
+      if (!deleteResult.value) {
+        throw new Error(`Failed to delete listing of id=${id}`);
       }
-      throw new Error(`Failed to delete listing of id=${id}`);
+      return deleteResult.value;
     }
+  },
+  Listing: {
+    id: (listing: Listing): string => listing._id.toString()
+    // Trivial resolvers taken care by Apollo Server
+    // title: (listing: Listing): string => listing.title,
+    // image: (listing: Listing): string => listing.image,
+    // address: (listing: Listing): string => listing.address,
+    // price: (listing: Listing): string => listing.price
+    // numberOfBedrooms: (listing: Listing): number => listing.numberOfBedrooms,
+    // numberOfBathrooms: (listing: Listing): number => listing.numberOfBathrooms,
+    // rating: (listing: Listing): number => listing.rating
   }
 };
