@@ -1,10 +1,10 @@
 import { GraphQLScalarType, Kind } from "graphql";
 
-// Based on answer by Daniel Rearden on Stack Overflow: https://stackoverflow.com/a/49911974/6651552
-
+// IntStringType is based on answer by Daniel Rearden on Stack Overflow: https://stackoverflow.com/a/49911974/6651552
 const MAX_INT = 2147483647;
 const MIN_INT = -2147483648;
-const coerceIntString = (inputValue: number) => {
+const coerceIntString = (inputValue: number | string) => {
+  // @ts-ignore: Argument of type 'number | string' is not assignable to parameter of type 'number'
   if (Number.isInteger(inputValue)) {
     if (inputValue < MIN_INT || inputValue > MAX_INT) {
       throw new TypeError(
@@ -17,6 +17,7 @@ const coerceIntString = (inputValue: number) => {
   }
   return String(inputValue);
 };
+// Documentation on defining custom scalar types here: https://www.apollographql.com/docs/graphql-tools/scalars/
 const IntStringType = new GraphQLScalarType({
   name: "IntString",
   description:
@@ -34,8 +35,7 @@ const IntStringType = new GraphQLScalarType({
   }
 });
 
-// To add the resolver to Apollo Server as detailed here: https://www.apollographql.com/docs/apollo-server/schema/scalars-enums/
-
+// Documentation on adding custom scalar type resolver to Apollo Server detailed here: https://www.apollographql.com/docs/apollo-server/schema/scalars-enums/
 export const intStringResolvers = {
   IntString: IntStringType
 };
