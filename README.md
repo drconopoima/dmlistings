@@ -41,3 +41,9 @@ npm build
 ```sh
 npm start
 ```
+
+## Seed with sample listings located in tmp/listings.json
+
+```sh
+npm run-script seed
+```
