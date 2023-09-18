@@ -4,6 +4,7 @@
 
 ```sh
 npm i -g typescript ts-node
+npm i
 ```
 
 ## Environment variables
